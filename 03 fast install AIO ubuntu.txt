@@ -1,0 +1,4 @@
+sudo apt update && sudo apt install -y --no-install-recommends build-essential libgmp3-dev libmpfr-dev libmpc-dev flex bison samba cups wget gcc cifs-utils konsole nemo linux-headers-6.1.0-31-amd64 compton console-setup picom git gnome-nettool gnome-disk-utility gnome-system-monitor gnome-connections mousepad lxqt-archiver gvfs-backends firefox-esr linux-headers-6.1.0-37-amd64 linux-image-6.1.0-37-amd64
+
+
+sudo apt update && sudo apt install -y build-essential libgmp3-dev libmpfr-dev libmpc-dev flex bison samba cups wget gcc cifs-utils compton console-setup picom git gnome-disk-utility gnome-system-monitor gvfs-backends 

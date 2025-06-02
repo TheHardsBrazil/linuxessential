@@ -1,0 +1,57 @@
+sudo update-grub
+
+sudo apt update
+
+sudo apt install lightdm
+
+s
+
+sudo apt isntall xinit
+
+startx
+sudo apt-get install ubuntu-desktop --no-install-recommends -y
+
+sudo apt install gnome
+
+sudo apt install gnome-software gnome-software-common 
+
+gnome-software-plugin-flatpak gnome-software-plugin-snap
+
+sudo apt install xfce4
+
+sudo apt install cinnamon
+
+
+sudo apt install xubuntu-core
+
+ctrl + alt + f1 na maquina real
+R ctrl  + f1 
+
+ctrl f7 
+
+ctrl + alt + f7
+
+
+sudo apt-get install --reinstall bcmwl-kernel-source
+
+execute (sudo apt-get install firmware-b43-installer) - reinicialize
+execute (sudo apt-get install --reinstall bcmwl-kernel-source) - reinicie
+
+
+======================================
+
+sudo apt install python-software-properties
+
+sudo apt install software-properties-common
+
+
+sudo add-apt-repository ppa:leaesy/dde
+
+sudo apt update
+
+
+
+----------
+
+sudo apt-get -y install xorg gnome-core gdm x11-xserver-utils gnome-utils
+

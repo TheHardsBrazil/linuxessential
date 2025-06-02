@@ -1,0 +1,63 @@
+# GNOME
+sudo apt install --no-install-recommends gnome-shell
+
+# KDE Plasma
+sudo apt install --no-install-recommends kde-plasma-desktop
+
+# XFCE
+sudo apt install --no-install-recommends xfce4
+
+# LXQt
+sudo apt install --no-install-recommends lxqt
+
+# MATE
+sudo apt install --no-install-recommends mate-desktop-environment
+
+# Cinnamon
+sudo apt install --no-install-recommends cinnamon
+
+# Budgie
+sudo apt install --no-install-recommends budgie-desktop
+
+# Deepin
+sudo apt install --no-install-recommends deepin-desktop-environment
+
+# Pantheon
+sudo apt install --no-install-recommends pantheon
+
+# Kali Linux (GNOME)
+# (Kali Linux é uma distribuição específica, mas se você estiver usando o Kali, o GNOME já vem instalado por padrão)
+
+# Enlightenment
+sudo apt install --no-install-recommends enlightenment
+
+# i3
+sudo apt install --no-install-recommends i3
+
+# Openbox
+sudo apt install --no-install-recommends openbox
+
+# Sway
+sudo apt install --no-install-recommends sway
+
+
+
+sudo apt install xfwm4
+sudo apt install gnome-shell
+sudo apt install fluxbox
+
+sudo apt install openbox
+
+sudo apt install xfce4-session
+
+sudo apt install sway
+
+
+==================================================
+
+sudo apt install slim
+sudo apt install lxdm
+sudo apt install lightdm
+sudo apt install gdm3
+sudo apt install xdm
+sudo apt install sddm

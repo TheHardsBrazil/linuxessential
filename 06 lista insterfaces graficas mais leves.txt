@@ -1,0 +1,22 @@
+# 1. Openbox
+sudo apt install --no-install-recommends openbox
+
+# 2. i3
+sudo apt install --no-install-recommends i3
+
+# 3. LXQt
+sudo apt install --no-install-recommends lxqt
+
+# 4. XFCE
+sudo apt install --no-install-recommends xfce4
+
+# 5. MATE
+sudo apt install --no-install-recommends mate-desktop-environment
+
+# 6. Cinnamon
+sudo apt install --no-install-recommends cinnamon
+
+# 7. Budgie
+sudo apt install --no-install-recommends budgie-desktop
+
+budgie-desktop-minimal
