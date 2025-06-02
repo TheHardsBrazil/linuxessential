@@ -1,0 +1,100 @@
+Ótimo, se você quer um sistema ainda mais minimalista, usando apenas o **Xorg** e o **picom**, sem um Window Manager completo como o **i3** ou **Openbox**, podemos seguir uma abordagem ainda mais simples.
+
+Aqui está o passo a passo para configurar o sistema usando apenas o **Xorg** e o **picom**:
+
+### 1. **Instalar o Xorg e o Picom**
+
+Primeiro, certifique-se de que você tem o **Xorg** e o **picom** instalados.
+
+Se você já tem o **Xorg** instalado, ótimo. Caso contrário, instale o **Xorg** e o **picom** com os seguintes comandos:
+
+```bash
+sudo apt update
+sudo apt install xorg picom
+```
+
+### 2. **Criar ou Editar o Arquivo `.xinitrc`**
+
+O arquivo `.xinitrc` controla o que será executado quando você iniciar o Xorg com o comando `startx`. Vamos configurar o **picom** para ser iniciado automaticamente ao rodar o Xorg.
+
+1. Edite o arquivo `.xinitrc` no seu diretório home (se não existir, crie um):
+
+   ```bash
+   nano ~/.xinitrc
+   ```
+
+2. Dentro do arquivo, adicione as seguintes linhas:
+
+   ```bash
+   # Inicia o Picom
+   picom &
+
+   # Fica em loop esperando o Xorg
+   exec xterm
+   ```
+
+   O `exec xterm` vai abrir um terminal simples quando o Xorg for iniciado. Se preferir outro terminal, como `alacritty` ou `st`, pode substituí-lo por esse.
+
+3. Salve o arquivo (Ctrl+X, depois Y e Enter).
+
+### 3. **Configuração do Picom (Opcional)**
+
+Se você quiser ajustar o **picom** (para animações ou suavizações específicas), edite o arquivo de configuração do **picom**.
+
+1. O **picom** tem um arquivo de configuração padrão em `~/.config/picom/picom.conf`. Se o diretório `~/.config/picom/` não existir, crie-o:
+
+   ```bash
+   mkdir -p ~/.config/picom
+   ```
+
+2. Crie ou edite o arquivo de configuração:
+
+   ```bash
+   nano ~/.config/picom/picom.conf
+   ```
+
+3. Aqui está um exemplo de configuração básica para o **picom** com algumas opções padrão que podem melhorar o desempenho gráfico e a suavidade:
+
+   ```bash
+   # Compositor básico do picom
+
+   # Ativa a suavização de bordas
+   corner-radius = 10
+
+   # Suaviza as sombras das janelas
+   shadow = true
+   shadow-radius = 12
+   shadow-offset-x = -12
+   shadow-offset-y = -12
+
+   # Animações para transições
+   fade-in-step = 0.03
+   fade-out-step = 0.03
+   ```
+
+4. Salve o arquivo (Ctrl+X, depois Y e Enter).
+
+### 4. **Rodar o Xorg**
+
+Agora que a configuração está pronta, você pode iniciar o Xorg com o comando `startx`:
+
+```bash
+startx
+```
+
+Isso vai inicializar o **Xorg**, carregar o **picom** para suavizar as janelas, e abrir um terminal **xterm** (ou o que você escolher no arquivo `.xinitrc`).
+
+### 5. **Gerenciar Janelas**
+
+Com essa configuração mínima, você não tem um Window Manager completo, mas o **picom** vai fornecer uma leve animação nas janelas e a suavização gráfica. Você pode usar um terminal como `xterm` para gerenciar o sistema a partir do ambiente gráfico.
+
+- **Fechar janelas**: Você pode fechar janelas clicando no botão de fechar ou usando comandos no terminal.
+- **Mover janelas**: O **picom** não vai fornecer um modo de mover janelas diretamente, pois você não tem um window manager, mas você ainda pode interagir com as janelas de forma básica.
+
+### 6. **Melhorias e Opções Futuras**
+
+Se você desejar adicionar mais funcionalidades, pode considerar a instalação de um **script simples** para gerenciar janelas ou usar o **sxhkd** (simple X hotkey daemon) para configurar atalhos de teclado para mover ou fechar janelas. Mas, por enquanto, essa configuração já é super minimalista.
+
+---
+
+Com isso, você terá um ambiente gráfico bem leve, com o **Xorg** e o **picom**, apenas com o essencial para exibir janelas com suavização e animações simples. A ideia é manter o sistema o mais enxuto possível, sem perder a funcionalidade básica.
