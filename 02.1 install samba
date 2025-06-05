@@ -1,0 +1,34 @@
+# Criar diretórios
+
+sudo mkdir /home/king/Público
+sudo chmod 770 /home/king/Público
+
+# Reiniciar o serviço Samba
+
+sudo systemctl restart smbd
+sudo systemctl restart nmbd
+
+# Editar o arquivo de configuração do Samba
+
+sudo nano /etc/samba/smb.conf
+
+
+[PublicoHome]
+path = /home/king/Público
+browsable = yes
+writable = yes
+guest ok = yes
+read only = no
+create mask = 0777
+directory mask = 0777
+
+
+sudo smbpasswd -a agro
+
+sudo systemctl start smbd
+sudo systemctl start nmbd
+
+sudo systemctl enable smbd
+sudo systemctl enable nmbd
+
+sudo systemctl restart smbd
