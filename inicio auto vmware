@@ -1,0 +1,37 @@
+Perfeito — vamos criar uma systemd user unit que inicia sua VM ao fazer login na sessão gráfica como usuário agro. Esta opção permite a janela GUI aparecer automaticamente.
+
+Execute estes comandos como usuário agro (cole no terminal):
+
+    Criar a unit e diretório:
+
+bash
+
+mkdir -p ~/.config/systemd/user
+cat > ~/.config/systemd/user/vm-ESISTEM.service <<'EOF'
+[Unit]
+Description=Start ESISTEM 10 PRO LITE (user)
+After=graphical-session.target network-online.target
+
+[Service]
+Type=forking
+ExecStart=/home/agro/bin/start-ESISTEM.sh
+ExecStop=/home/agro/bin/stop-ESISTEM.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
+EOF
+
+    Recarregar user systemd, habilitar e iniciar agora:
+
+bash
+
+systemctl --user daemon-reload
+systemctl --user enable --now vm-ESISTEM.service
+
+    (Opcional) Para verificar status ou logs:
+
+bash
+
+systemctl --user status vm-ESISTEM.service
+journalctl --user -u vm-ESISTEM.service
