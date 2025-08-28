@@ -1,0 +1,61 @@
+Perfeito — vou gerar dois arquivos prontos para você:
+
+1) Script de execução: ~/bin/start-ESISTEM.sh  
+2) Atalho para clicar (Desktop entry): ~/Área\ de\ Trabalho/Start-ESISTEM.desktop
+
+Conteúdo do script (torne executável):
+```bash
+#!/bin/bash
+# start-ESISTEM.sh — inicia ESISTEM 10 PRO LITE com GUI usando vmrun como usuário agro
+
+VM="/home/agro/vmware/ESISTEM 10 PRO LITE/ESISTEM 10 PRO LITE.vmx"
+VMRUN="$(which vmrun || echo /usr/bin/vmrun)"
+
+# iniciar com GUI
+"$VMRUN" -T ws start "$VM"
+```
+
+Permissões:
+```bash
+mkdir -p ~/bin
+cat > ~/bin/start-ESISTEM.sh <<'EOF'
+#!/bin/bash
+VM="/home/agro/vmware/ESISTEM 10 PRO LITE/ESISTEM 10 PRO LITE.vmx"
+VMRUN="$(which vmrun || echo /usr/bin/vmrun)"
+"$VMRUN" -T ws start "$VM"
+EOF
+chmod +x ~/bin/start-ESISTEM.sh
+```
+
+Conteúdo do atalho .desktop (salve em ~/Área de Trabalho/Start-ESISTEM.desktop):
+```ini
+[Desktop Entry]
+Type=Application
+Name=Start ESISTEM 10 PRO LITE
+Comment=Iniciar VM ESISTEM 10 PRO LITE (VMware Workstation)
+Exec=/home/agro/bin/start-ESISTEM.sh
+Icon=vmware
+Terminal=false
+Categories=Utility;
+```
+
+Comandos para criar o atalho automaticamente (copie e cole no terminal):
+```bash
+mkdir -p ~/Área\ de\ Trabalho
+cat > ~/Área\ de\ Trabalho/Start-ESISTEM.desktop <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Start ESISTEM 10 PRO LITE
+Comment=Iniciar VM ESISTEM 10 PRO LITE (VMware Workstation)
+Exec=/home/agro/bin/start-ESISTEM.sh
+Icon=vmware
+Terminal=false
+Categories=Utility;
+EOF
+chmod +x ~/Área\ de\ Trabalho/Start-ESISTEM.desktop
+```
+
+Observações rápidas:
+- Como o atalho roda com seu usuário agro, não use sudo; ele abrirá a janela GUI se seu ambiente gráfico permitir.
+- Se o clique não iniciar, execute ~/bin/start-ESISTEM.sh no terminal para ver mensagens de erro.
+- Quer que eu também gere um atalho para parar a VM (stop soft)?
