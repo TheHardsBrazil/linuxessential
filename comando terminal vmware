@@ -1,0 +1,21 @@
+
+modelos comandos.
+
+sudo vmrun -T ws start "/home/agro/vmware/king1/king1.vmx"
+
+mostras vmware que estão rodando.
+
+sudo vmrun -T ws list
+
+
+Iniciar (sem GUI):
+sudo vmrun -T ws start "/home/agro/vmware/ESISTEM 10 PRO LITE/ESISTEM 10 PRO LITE.vmx" nogui
+
+Iniciar com GUI:
+sudo vmrun -T ws start "/home/agro/vmware/ESISTEM 10 PRO LITE/ESISTEM 10 PRO LITE.vmx"
+
+Desligar gracioso:
+sudo vmrun -T ws stop "/home/agro/vmware/ESISTEM 10 PRO LITE/ESISTEM 10 PRO LITE.vmx" soft
+
+Forçar desligamento:
+sudo vmrun -T ws stop "/home/agro/vmware/ESISTEM 10 PRO LITE/ESISTEM 10 PRO LITE.vmx" hard
