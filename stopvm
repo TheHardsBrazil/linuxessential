@@ -1,0 +1,25 @@
+# criar script de stop
+mkdir -p ~/bin
+cat > ~/bin/stop-ESISTEM.sh <<'EOF'
+#!/bin/bash
+VM="/home/agro/vmware/ESISTEM 10 PRO LITE/ESISTEM 10 PRO LITE.vmx"
+VMRUN="$(which vmrun || echo /usr/bin/vmrun)"
+
+# desligamento gracioso (soft)
+"$VMRUN" -T ws stop "$VM" soft
+EOF
+chmod +x ~/bin/stop-ESISTEM.sh
+
+# criar atalho na Área de Trabalho
+mkdir -p ~/Área\ de\ Trabalho
+cat > ~/Área\ de\ Trabalho/Stop-ESISTEM.desktop <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Stop ESISTEM 10 PRO LITE
+Comment=Desligar VM ESISTEM 10 PRO LITE (soft)
+Exec=/home/agro/bin/stop-ESISTEM.sh
+Icon=vmware
+Terminal=false
+Categories=Utility;
+EOF
+chmod +x ~/Área\ de\ Trabalho/Stop-ESISTEM.desktop
