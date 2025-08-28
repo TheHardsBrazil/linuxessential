@@ -1,0 +1,30 @@
+como acessar o outro pc por ssh no terminal
+
+
+    No PC remoto: confirme que o serviço SSH está instalado e em execução:
+        Para Debian/Ubuntu:
+
+
+Code
+
+    sudo apt update
+    sudo apt install openssh-server
+    sudo systemctl enable --now ssh
+
+    No PC remoto: descubra seu IP local (ex.: 192.168.1.42):
+
+Code
+
+ip addr show
+
+Procure pela interface conectada (eth0, wlan0) e o endereço inet.
+
+    No PC local (o seu): conectar por SSH:
+
+    Com senha:
+
+Code
+
+ssh usuario@IP_do_remoto
+
+Ex.: ssh joao@192.168.1.42
