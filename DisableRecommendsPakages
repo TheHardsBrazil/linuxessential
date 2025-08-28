@@ -1,0 +1,23 @@
+ara evitar que o APT instale pacotes "recomendados" como dependências, edite a configuração do APT.
+
+Code
+
+sudoedit /etc/apt/apt.conf.d/99no-recommends
+
+    Cole uma linha:
+
+Code
+
+APT::Install-Recommends "false";
+APT::Install-Suggests "false";
+
+
+--------------------------------------------------------
+
+    Para um comando único (sem mudar config)
+
+    Use a opção --no-install-recommends:
+
+Code
+
+sudo apt install --no-install-recommends pacote
