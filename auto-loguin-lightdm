@@ -1,0 +1,9 @@
+Para LightDM, adicione ou modifique as seguintes linhas na seção [Seat:*]: 
+
+sudo nano /etc/lightdm/lightdm.conf
+
+
+[Seat:*]
+autologin-guest=false
+autologin-user=agro
+autologin-user-timeout=0
