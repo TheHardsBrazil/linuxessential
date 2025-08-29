@@ -1,3 +1,7 @@
+INSTALAR IMPRESSORA NO LINUX
+
+https://www.youtube.com/watch?v=Ff3bONQBNJU
+
 DRIVER ARCHIVES INSTALL
 https://drive.google.com/drive/folders/1yXJMEQfHMhXneXvqhh3q0N1kzHxi2syc
 
