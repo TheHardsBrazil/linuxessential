@@ -1,0 +1,113 @@
+## 🖥️ Passo a Passo para Criar um Servidor de Backup no Debian 12 com RAID 1
+
+Criar um servidor de backup na sua rede local usando Debian 12 e configurando dois HDs de 500 GB em RAID 1 é uma ótima maneira de garantir a segurança dos seus dados. Aqui está um guia passo a passo para ajudá-lo nesse processo.
+
+### 📦 1. Preparação do Sistema
+
+1. **Instalação do Debian 12**:
+   - Baixe a imagem ISO do Debian 12 e crie um pen drive bootável.
+   - Inicie o computador a partir do pen drive e siga as instruções de instalação.
+   - Durante a instalação, escolha a opção de particionamento manual.
+
+2. **Configuração do RAID 1**:
+   - Quando solicitado a particionar, selecione os dois HDs de 500 GB.
+   - Crie uma partição em cada HD e configure-as como RAID 1.
+   - O Debian irá configurar automaticamente o RAID durante a instalação.
+
+### 💻 2. Instalação de Pacotes Necessários
+
+Após a instalação do sistema, você precisará instalar alguns pacotes para gerenciar o backup.
+
+```bash
+sudo apt update
+sudo apt install rsync samba
+```
+
+### 🔧 3. Configuração do Samba
+
+1. **Configurar o Samba**:
+   - Edite o arquivo de configuração do Samba:
+
+   ```bash
+   sudo nano /etc/samba/smb.conf
+   ```
+
+   - Adicione a seguinte configuração ao final do arquivo:
+
+   ```ini
+   [backup]
+   path = /mnt/backup
+   available = yes
+   valid users = @sambashare
+   read only = no
+   browsable = yes
+   public = yes
+   writable = yes
+   ```
+
+2. **Criar o Diretório de Backup**:
+   - Crie o diretório onde os backups serão armazenados:
+
+   ```bash
+   sudo mkdir /mnt/backup
+   ```
+
+3. **Configurar Permissões**:
+   - Altere as permissões do diretório:
+
+   ```bash
+   sudo chown -R nobody:nogroup /mnt/backup
+   sudo chmod -R 0777 /mnt/backup
+   ```
+
+4. **Adicionar Usuário Samba**:
+   - Crie um grupo e adicione um usuário para o Samba:
+
+   ```bash
+   sudo groupadd sambashare
+   sudo useradd -M -s /sbin/nologin -G sambashare usuario
+   sudo smbpasswd -a usuario
+   ```
+
+5. **Reiniciar o Samba**:
+   - Reinicie o serviço do Samba para aplicar as alterações:
+
+   ```bash
+   sudo systemctl restart smbd
+   ```
+
+### 🔄 4. Configuração de Backup
+
+1. **Usar o rsync para Backup**:
+   - Você pode usar o `rsync` para fazer backup dos seus outros computadores. Por exemplo, para fazer backup de um diretório específico:
+
+   ```bash
+   rsync -avz /caminho/do/diretorio usuario@ip_do_servidor:/mnt/backup
+   ```
+
+2. **Automatizar o Backup**:
+   - Para automatizar o backup, você pode criar um cron job. Edite o crontab:
+
+   ```bash
+   crontab -e
+   ```
+
+   - Adicione uma linha para agendar o backup (por exemplo, diariamente às 2 da manhã):
+
+   ```bash
+   0 2 * * * rsync -avz /caminho/do/diretorio usuario@ip_do_servidor:/mnt/backup
+   ```
+
+### ✅ 5. Verificação do RAID
+
+Para verificar o status do RAID, você pode usar o seguinte comando:
+
+```bash
+cat /proc/mdstat
+```
+
+Isso mostrará o estado do seu array RAID.
+
+---
+
+Com esses passos, você terá um servidor de backup funcional em sua rede local, utilizando Debian 12 e RAID 1. Se precisar de mais detalhes ou ajuda em alguma parte específica, sinta-se à vontade para perguntar!
