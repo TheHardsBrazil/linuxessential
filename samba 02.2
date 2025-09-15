@@ -1,3 +1,7 @@
+sudo apt install gvfs-backends gvfs-fuse smbclient cifs-utils
+
+sudo apt install gvfs-backends gvfs-fuse samba smbclient cifs-utils libnss-winbind winbind
+
 # Criar diretórios
 
 sudo mkdir -p /home/king/Público
@@ -34,7 +38,7 @@ sudo nano /etc/samba/smb.conf
    inherit permissions = yes
 
 
-
+sudo systemctl enable --now winbind
 
 sudo systemctl start smbd
 sudo systemctl start nmbd
@@ -43,3 +47,4 @@ sudo systemctl enable smbd
 sudo systemctl enable nmbd
 
 sudo systemctl restart smbd
+sudo systemctl restart nmbd
