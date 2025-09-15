@@ -20,6 +20,10 @@ sudo smbpasswd -e king
 sudo smbpasswd -e agrolojadois
 sudo smbpasswd -e agrovendas
 
+sudo useradd -m agrolojadois
+sudo useradd -m agrovendas
+
+
 # Editar o arquivo de configuração do Samba
 
 sudo nano /etc/samba/smb.conf
