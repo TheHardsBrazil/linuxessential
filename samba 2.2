@@ -1,0 +1,45 @@
+# Criar diretórios
+
+sudo mkdir -p /home/king/Público
+sudo chown -R king:king /home/king/Público
+sudo find /home/king/Público -type d -exec chmod 2770 {} +
+sudo find /home/king/Público -type f -exec chmod 660 {} +
+
+
+
+# adicionar/atualizar contas Samba (será solicitado senha Samba)
+sudo smbpasswd -a king
+sudo smbpasswd -a agrolojadois
+sudo smbpasswd -a agrovendas
+
+sudo smbpasswd -e king
+sudo smbpasswd -e agrolojadois
+sudo smbpasswd -e agrovendas
+
+# Editar o arquivo de configuração do Samba
+
+sudo nano /etc/samba/smb.conf
+
+[PublicoHome]
+   path = /home/king/Público
+   browseable = yes
+   writable = yes
+   read only = no
+   guest ok = no
+   valid users = king,agrolojadois,agrovendas
+   create mask = 0660
+   directory mask = 2770
+   force create mode = 0660
+   force directory mode = 2770
+   inherit permissions = yes
+
+
+
+
+sudo systemctl start smbd
+sudo systemctl start nmbd
+
+sudo systemctl enable smbd
+sudo systemctl enable nmbd
+
+sudo systemctl restart smbd
