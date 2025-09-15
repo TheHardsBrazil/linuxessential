@@ -20,6 +20,7 @@ sudo smbpasswd -e king
 sudo smbpasswd -e agrolojadois
 sudo smbpasswd -e agrovendas
 
+#sudo useradd -m nome — cria a conta e cria /home/nome (útil se o usuário não existir).
 sudo useradd -m agrolojadois
 sudo useradd -m agrovendas
 
