@@ -56,7 +56,62 @@ sudo apt install samba gvfs-backends gvfs-fuse smbclient cifs-utils winbind
 
     Reinicie e siga os passos do Moderate.
 
+
 Notas rápidas:
 
     Para aparecer na barra lateral do Thunar use gvfs-backends/gvfs-fuse; para ícones no desktop seria necessário xfdesktop integração (pediu só dentro, então não incluí).
     Se houver autenticação de domínio, diga o domínio; posso ajustar comandos.
+
+
+    
+
+No terminal, regenere as pastas padrão com:
+
+
+
+xdg-user-dirs-update
+
+    Verifique conteúdo do seu home:
+
+
+ls -la ~
+cat ~/.config/user-dirs.dirs
+
+Se aparecerem as entradas em ~/.config/user-dirs.dirs mas as pastas não existirem, crie-as:
+
+
+
+xargs -a <(sed -n 's/.*"$.*$".*/\1/p' ~/.config/user-dirs.dirs) -I{} mkdir -p "$HOME/{}"
+
+
+.
+GPT-5 mini
+
+Confirmando: você quer as pastas padrão (Downloads, Imagens, Vídeos, Documentos, Música, Desktop) visíveis no Thunar e em ~/ — ✅ ou ❌?
+
+
+
+
+==============================   =======================================
+    Instale xdg-user-dirs:
+
+
+
+sudo apt update
+sudo apt install xdg-user-dirs
+
+ 
+Regenerar e criar as pastas:
+
+
+xdg-user-dirs-update
+mkdir -p "$HOME"/{Desktop,Downloads,Documents,Music,Pictures,Videos}
+
+
+    Verifique:
+
+
+ls -la ~ | egrep 'Desktop|Downloads|Documents|Music|Pictures|Videos'
+cat ~/.config/user-dirs.dirs
+
+
