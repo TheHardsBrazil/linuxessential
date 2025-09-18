@@ -1,0 +1,28 @@
+apt install xinit
+apt install lighdm
+apt xorg
+apt install openbox
+apt install sudo
+sudo reboot
+
+apt install xfce4
+apt install konsole --no-install-recommends
+apt remove xterm
+apt install synaptic
+
+apt install thunar
+
+sudo apt install gvfs-backends gvfs-fuse samba smbclient cifs-utils libnss-winbind winbind
+
+apt install git
+
+sudo wget "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=pt-BR" -O firefox.tar.bz2
+
+
+
+sudo apt install git gnome-nettool gnome-disk-utility gnome-system-monitor mousepad lxqt-archiver
+sudo apt install file-roller --no-install-recommends
+
+
+apt install xfce4-sessions
+apt install xfce4-power-manager-data
